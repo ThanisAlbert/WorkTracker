@@ -1,7 +1,7 @@
 import Login from "./Components/Login";
 import { Routes, Route, Link } from "react-router-dom";
 import Header from "./Components/Header";
-import WorkTracker from "./Components/WorkTracker";
+import Page from "./Components/Page";
 
 
 function App() {
@@ -9,7 +9,8 @@ function App() {
     <>
       <Routes>
       <Route path="/" element={<Login/>} />
-      <Route path="worktracker" element={<WorkTracker/>} />
+      <Route path="worktracker" element={<Page/>} />
+      <Route path="logout" element={<Login/>} />
       </Routes>  
     </>
   );

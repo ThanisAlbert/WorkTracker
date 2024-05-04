@@ -7,6 +7,9 @@ export default function Login(){
 
     const[username,setUsername]=useState("")
     const[password,setPassword]=useState("")
+    const [errorMessage, setErrorMessage] = useState(""); 
+  
+
     const navigate = useNavigate()
 
 
@@ -14,18 +17,28 @@ export default function Login(){
 
       e.preventDefault(); 
 
-      Axios.post('http://172.24.3.13:81/api/validatelogin',{"username":username,"password":password})
+      Axios.post('http://172.24.3.13:81/api/validatelogin',{"username":username,"password":password}, {
+        timeout: 3000 
+    })
      
       .then(res => {
  
-      if (res.data === "Valid") {          
-          navigate("/worktracker")  
+      if (res.data === "Valid") {    
+
+        sessionStorage.setItem('username', username);
+
+
+        navigate("/worktracker"); 
       } else {     
-        console.log("I am executed")
-        navigate("/")     
+        setErrorMessage("Please Enter Correct Username and Password")  
       }
 
      }) 
+     
+     .catch(res=>{
+      setErrorMessage("NetworkError") 
+     })
+
 
   }
 
@@ -66,6 +79,7 @@ return(
                 <hr />
                 
                 <div className="text-center">
+                <p style={{color: 'red'}}>{errorMessage}</p>
                 </div>
               </div>
             </div>
