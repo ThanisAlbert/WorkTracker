@@ -1,7 +1,18 @@
 import {useEffect} from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Sidebar(){
 
+  const navigate = useNavigate() 
+
+
+  const home=()=>{
+  
+   window.location.reload();
+
+   navigate("/worktracker")
+
+  }
 
     return(
     
@@ -10,11 +21,11 @@ export default function Sidebar(){
 
 {/* Sidebar */}
 <ul className="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
-  <a className="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+  <a className="sidebar-brand d-flex align-items-center justify-content-center" onClick={home} >
     <div className="sidebar-brand-icon">
       <img src="img/logo/logo2.png" />
     </div>
-    <div className="sidebar-brand-text mx-3">Worktracker</div>
+    <div className="sidebar-brand-text mx-3" style={{color:"white"}}>Worktracker</div>
   </a>
   <hr className="sidebar-divider my-0" />
   <li className="nav-item active">

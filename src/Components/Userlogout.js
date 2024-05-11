@@ -4,20 +4,29 @@ import { useNavigate } from 'react-router-dom'
 
 function Userlogout() {
   
-   
   const navigate = useNavigate()  
+
 
   const logout = ()=>{
     
     console.log(sessionStorage.getItem('username'))
 
     sessionStorage.removeItem('username');
-      
-    navigate("/"); 
+    
+    const modal = document.getElementById('logoutModal');
+    
+     // Close the modal
+     const closeButton = document.querySelector('#logoutModal .close');
+     if (closeButton) {
+       closeButton.click();
+     }
+
+     window.location.reload(); 
+
+    navigate("/")
+
 
   }
-
-
 
   return (
     <>
@@ -41,7 +50,6 @@ function Userlogout() {
               </div>
             </div>
           </div>
-   
    
     </>
   )

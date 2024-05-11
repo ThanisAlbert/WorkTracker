@@ -1,4 +1,15 @@
+import { useNavigate } from 'react-router-dom';
+import React,{ useEffect, useState } from "react";
+
 export default function Footer(){
+
+  const navigate = useNavigate();
+  const [username, setUsername] = useState(sessionStorage.getItem('username'));
+
+  useEffect(() => {
+    console.log("I am footer")
+  }, []);
+
 
     return(
     
